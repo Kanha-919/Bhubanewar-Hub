@@ -242,10 +242,22 @@ function payViaUPI(upiId, payeeName, amount, note) {
 }
 
 function openUPIPaymentPrompt() {
-    const upi = prompt('Enter UPI ID to pay (example: yourid@upi):', 'bhubaneswarhub@upi');
-    if(!upi) return;
+    // Only allow payments to these approved receiver UPI IDs
+    const allowedUPIs = ['8984081009@ybl', '7735103122@ybl'];
+
+    const choice = prompt(
+        'Enter/paste one of the allowed UPI IDs to pay to:\n1) 8984081009@ybl\n2) 7735103122@ybl',
+        allowedUPIs[0]
+    );
+    if (!choice) return;
+    const upi = choice.trim();
+    if (!allowedUPIs.includes(upi)) {
+        alert('UPI ID not allowed. Payments are only accepted to 8984081009@ybl or 7735103122@ybl');
+        return;
+    }
+
     const amt = prompt('Amount (INR):', '100');
-    if(!amt || isNaN(Number(amt))) return alert('Invalid amount');
+    if (!amt || isNaN(Number(amt))) return alert('Invalid amount');
     payViaUPI(upi, 'Bhubaneswar Hub', Number(amt), 'Payment');
 }
 

@@ -12,6 +12,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
+    <!-- Navigation Bar -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
             <div class="flex items-center gap-2 cursor-pointer" onclick="showPage('home')">
@@ -22,30 +23,38 @@
                 </div>
             </div>
             <div class="hidden md:flex space-x-6 font-semibold uppercase text-sm tracking-wider">
-                <a href="#" onclick="showPage('home')" class="nav-link" id="link-home">Home</a>
-                <a href="#" onclick="showPage('spa')" class="nav-link" id="link-spa">Wellness Spa</a>
-                <a href="#" onclick="showPage('rooms')" class="nav-link" id="link-rooms">Lodging</a>
-                <a href="#" onclick="showPage('food')" class="nav-link" id="link-food">Food</a>
-                <a href="#" onclick="showPage('social activities')" class="nav-link" id="link-ngo">Social Activities</a>
-                <a href="#" onclick="showPage('gallery')" class="nav-link" id="link-gallery">Gallery</a>
+                <a href="#" onclick="showPage('home')" class="nav-link text-blue-600" id="link-home">Home</a>
+                <a href="#" onclick="showPage('spa')" class="nav-link text-gray-600 hover:text-blue-600" id="link-spa">Wellness Spa</a>
+                <a href="#" onclick="showPage('rooms')" class="nav-link text-gray-600 hover:text-blue-600" id="link-rooms">Lodging</a>
+                <a href="#" onclick="showPage('food')" class="nav-link text-gray-600 hover:text-blue-600" id="link-food">Food</a>
+                <a href="#" onclick="showPage('social-activities')" class="nav-link text-gray-600 hover:text-blue-600" id="link-ngo">Social Activities</a>
+                <a href="#" onclick="showPage('gallery')" class="nav-link text-gray-600 hover:text-blue-600" id="link-gallery">Gallery</a>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative cursor-pointer" onclick="toggleCart()">
+                <!-- Admin Dashboard Indicator Menu -->
+                <div id="adminPanelStatus" class="hidden flex items-center gap-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-xl">
+                    <span class="text-xs font-bold text-amber-800"><i class="fas fa-user-shield mr-1"></i> Admin</span>
+                    <button onclick="handleLogout()" class="text-xs text-red-600 font-bold underline hover:text-red-800">Logout</button>
+                </div>
+
+                <div class="relative cursor-pointer text-gray-700 hover:text-blue-600 transition" onclick="toggleCart()">
                     <i class="fas fa-shopping-cart text-xl"></i>
-                    <span id="cartCount" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">0</span>
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1.5 py-0.5 min-w-[18px] text-center font-bold">0</span>
                 </div>
                 <button onclick="showPage('contact')" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition font-bold text-sm">INQUIRY</button>
             </div>
         </div>
     </nav>
 
-    <main id="home" class="page-section active">
+    <!-- Main Content Context Framework -->
+    <!-- Home View Container -->
+    <main id="home" class="page-section">
         <!-- Hero Section -->
         <div class="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600" class="absolute inset-0 w-full h-full object-cover brightness-[1] animate-zoom-subtle" alt="Luxury">
             <div class="relative z-10 text-white px-4">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 animate-slide-down">Luxury & <span class="text-blue-400 animate-glow">Purpose</span></h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-200 animate-slide-up">Bhubaneswar's premier hub for wellness, premium stays, and social impact.</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 animate-slide-down" style="color: rgb(255, 255, 255); text-shadow: 2px 2px 4px rgba(213, 215, 247, 0.5);">Luxury & <span class="text-blue-400 animate-glow">Purpose</span></h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-200 animate-slide-up" style="color:rgb(0, 0, 0)">Bhubaneswar's premier hub for wellness, premium stays, and social impact.  </p>
                 <div class="flex flex-wrap gap-4 justify-center animate-fade-in" style="animation-delay: 0.6s">
                     <button onclick="showPage('rooms')" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition hover:scale-105 duration-300">Book Rooms</button>
                     <button onclick="showPage('social activities')" class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold transition hover:scale-105 duration-300">Our Mission</button>
@@ -57,20 +66,20 @@
         <div class="bg-gradient-to-b from-gray-50 to-white py-20 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-slide-down">Explore Our Services</h2>
-                    <p class="text-gray-600 text-lg animate-slide-up">Everything you need in one place</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Explore Our Services</h2>
+                    <p class="text-gray-600 text-lg">Everything you need in one place</p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Wellness Spa Card -->
-                    <div onclick="showPage('spa')" class="group cursor-pointer animate-scale-in" style="animation-delay: 0.1s">
+                    <div onclick="showPage('spa')" class="group cursor-pointer">
                         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div class="relative h-48 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Wellness Spa">
+                                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Wellness Spa">
                                 <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <i class="fas fa-spa text-3xl text-blue-600 mb-3 block group-hover:animate-bounce"></i>
+                                <i class="fas fa-spa text-3xl text-blue-600 mb-3 block"></i>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Wellness Spa</h3>
                                 <p class="text-gray-600 mb-4">Professional massage & training courses</p>
                                 <span class="text-blue-600 font-bold group-hover:translate-x-2 inline-block transition-transform">Explore → </span>
@@ -79,14 +88,14 @@
                     </div>
 
                     <!-- Luxury Lodging Card -->
-                    <div onclick="showPage('rooms')" class="group cursor-pointer animate-scale-in" style="animation-delay: 0.2s">
+                    <div onclick="showPage('rooms')" class="group cursor-pointer">
                         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div class="relative h-48 overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Luxury Lodging">
                                 <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <i class="fas fa-bed text-3xl text-blue-600 mb-3 block group-hover:animate-bounce"></i>
+                                <i class="fas fa-bed text-3xl text-blue-600 mb-3 block"></i>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Luxury Lodging</h3>
                                 <p class="text-gray-600 mb-4">Premium rooms with world-class amenities</p>
                                 <span class="text-blue-600 font-bold group-hover:translate-x-2 inline-block transition-transform">Explore → </span>
@@ -95,14 +104,14 @@
                     </div>
 
                     <!-- Gourmet Food Card -->
-                    <div onclick="showPage('food')" class="group cursor-pointer animate-scale-in" style="animation-delay: 0.3s">
+                    <div onclick="showPage('food')" class="group cursor-pointer">
                         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div class="relative h-48 overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gourmet Food">
                                 <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <i class="fas fa-utensils text-3xl text-blue-600 mb-3 block group-hover:animate-bounce"></i>
+                                <i class="fas fa-utensils text-3xl text-blue-600 mb-3 block"></i>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Gourmet Delivery</h3>
                                 <p class="text-gray-600 mb-4">Delicious meals delivered to your door</p>
                                 <span class="text-blue-600 font-bold group-hover:translate-x-2 inline-block transition-transform">Explore → </span>
@@ -111,30 +120,30 @@
                     </div>
 
                     <!-- Photo Gallery Card -->
-                    <div onclick="showPage('gallery')" class="group cursor-pointer animate-scale-in" style="animation-delay: 0.4s">
+                    <div onclick="showPage('gallery')" class="group cursor-pointer">
                         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div class="relative h-48 overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gallery">
                                 <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <i class="fas fa-images text-3xl text-blue-600 mb-3 block group-hover:animate-bounce"></i>
+                                <i class="fas fa-images text-3xl text-blue-600 mb-3 block"></i>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Photo Gallery</h3>
-                                <p class="text-gray-600 mb-4">Upload and showcase your moments</p>
+                                <p class="text-gray-600 mb-4">Showcasing our dynamic infrastructure</p>
                                 <span class="text-blue-600 font-bold group-hover:translate-x-2 inline-block transition-transform">Explore → </span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Social Activities Card -->
-                    <div onclick="showPage('social activities')" class="group cursor-pointer animate-scale-in" style="animation-delay: 0.5s">
+                    <div onclick="showPage('social-activities')" class="group cursor-pointer">
                         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div class="relative h-48 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1708593343442-7595427ddf7b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Social Impact">
+                                <img src="https://images.unsplash.com/photo-1708593343442-7595427ddf7b?q=80&w=1470&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Social Impact">
                                 <div class="absolute inset-0 bg-gradient-to-t from-green-900/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <i class="fas fa-handshake text-3xl text-green-600 mb-3 block group-hover:animate-bounce"></i>
+                                <i class="fas fa-handshake text-3xl text-green-600 mb-3 block"></i>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Social Activities</h3>
                                 <p class="text-gray-600 mb-4">Empower youth & community development</p>
                                 <span class="text-green-600 font-bold group-hover:translate-x-2 inline-block transition-transform">Learn More → </span>
@@ -143,14 +152,14 @@
                     </div>
 
                     <!-- Contact Card -->
-                    <div onclick="showPage('contact')" class="group cursor-pointer animate-scale-in" style="animation-delay: 0.6s">
+                    <div onclick="showPage('contact')" class="group cursor-pointer">
                         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div class="relative h-48 overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Contact">
                                 <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <i class="fas fa-envelope text-3xl text-blue-600 mb-3 block group-hover:animate-bounce"></i>
+                                <i class="fas fa-envelope text-3xl text-blue-600 mb-3 block"></i>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h3>
                                 <p class="text-gray-600 mb-4">Any questions? We're here to help</p>
                                 <span class="text-blue-600 font-bold group-hover:translate-x-2 inline-block transition-transform">Contact → </span>
@@ -162,6 +171,7 @@
         </div>
     </main>
 
+    <!-- Spa Section Container -->
     <section id="spa" class="page-section hidden py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-12">Wellness & Training</h2>
@@ -190,11 +200,19 @@
         </div>
     </section>
 
+    <!-- Photo Gallery Container -->
     <section id="gallery" class="page-section hidden py-20 bg-white">
         <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-8">Photo Gallery</h2>
-            <div class="mb-10">
-                <!-- Drag & Drop Upload Area -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+                <h2 class="text-4xl font-bold">Photo Gallery</h2>
+                <!-- Login / Trigger configuration for control logic -->
+                <button id="adminLoginTriggerBtn" onclick="openAdminLoginModal()" class="text-sm font-semibold text-gray-500 hover:text-blue-600 bg-gray-100 px-4 py-2 rounded-xl transition">
+                    <i class="fas fa-lock mr-2"></i>Admin Management Login
+                </button>
+            </div>
+
+            <!-- Conditional Admin Upload UI System View wrapper component -->
+            <div id="adminUploadControls" class="hidden mb-10">
                 <div id="uploadDropZone" class="border-4 border-dashed border-blue-300 rounded-2xl p-8 text-center bg-blue-50 hover:bg-blue-100 transition cursor-pointer mb-6">
                     <div class="mb-4">
                         <i class="fas fa-cloud-upload-alt text-5xl text-blue-600 mb-4 block"></i>
@@ -204,33 +222,35 @@
                     <input id="galleryInput" type="file" accept="image/*" multiple class="hidden" />
                 </div>
                 
-                <!-- Quick Upload Button -->
-                <div class="flex justify-center gap-4 mb-6">
-                    <button id="addToGalleryBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold text-lg transition shadow-lg">Upload Images</button>
-                    <button id="clearGalleryBtn" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-bold text-lg transition shadow-lg">Clear Gallery</button>
+                <div class="flex justify-center gap-4">
+                    <button id="addToGalleryBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold text-lg transition shadow-lg">Process Uploads</button>
+                    <button id="clearGalleryBtn" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-bold text-lg transition shadow-lg">Clear All Content</button>
                 </div>
-                
-                <p class="text-sm text-gray-600 text-center">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    Images are stored locally in your browser. Refresh to keep them persistent.
-                </p>
             </div>
+            
+            <div id="galleryStatusNotice" class="bg-gray-100 p-4 rounded-xl text-center text-sm text-gray-600 mb-6 flex items-center justify-center gap-2">
+                <i class="fas fa-info-circle text-blue-500"></i>
+                <span>Public users can read/view only. Administrator login required for updates.</span>
+            </div>
+
+            <!-- Dynamic grid container rendering engine mapping point -->
             <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
         </div>
     </section>
 
+    <!-- Lodging / Rooms Container View -->
     <section id="rooms" class="page-section hidden py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-12">Luxury Lodging</h2>
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center">Luxury Lodging</h2>
             <div class="grid md:grid-cols-3 gap-8 text-left">
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg border">
-                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800" class="h-56 w-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800" class="h-56 w-full object-cover" alt="Executive Suite">
                     <div class="p-6">
                         <h3 class="font-bold text-xl">Executive Suite</h3>
                         <p class="text-gray-600 my-3">AC, High-speed Wi-Fi, and complimentary breakfast.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-blue-600">₹1,499<span class="text-sm text-gray-400">/night</span></span>
-                            <button onclick="payNow(1499, 'Executive Suite')" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Book</button>
+                            <button onclick="payNow(1499, 'Executive Suite')" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Book</button>
                         </div>
                     </div>
                 </div>
@@ -238,31 +258,33 @@
         </div>
     </section>
 
+    <!-- Food Section Delivery Container View Grid -->
     <section id="food" class="page-section hidden py-20">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
                 <h2 class="text-4xl font-bold">Gourmet Delivery</h2>
                 <div class="flex gap-2 overflow-x-auto pb-2">
-                    <button class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm font-bold">All</button>
-                    <button class="bg-gray-100 px-4 py-1 rounded-full text-sm">Veg</button>
-                    <button class="bg-gray-100 px-4 py-1 rounded-full text-sm">Non-Veg</button>
+                    <button class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">All</button>
+                    <button class="bg-gray-100 hover:bg-gray-200 px-4 py-1 rounded-full text-sm transition">Veg</button>
+                    <button class="bg-gray-100 hover:bg-gray-200 px-4 py-1 rounded-full text-sm transition">Non-Veg</button>
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="foodGrid">
                 <div class="bg-white p-4 rounded-2xl shadow-sm border hover:shadow-xl transition">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" class="rounded-xl mb-4 h-48 w-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" class="rounded-xl mb-4 h-48 w-full object-cover" alt="Paneer Butter Masala">
                     <h4 class="font-bold text-lg">Paneer Butter Masala</h4>
                     <p class="text-orange-600 font-bold mb-4">₹149</p>
                     <div class="flex gap-2">
-                        <button onclick="addToCart('Paneer Butter Masala', 149)" class="flex-1 bg-gray-100 py-2 rounded-lg font-bold">Add</button>
-                        <button onclick="payNow(149, 'Paneer Butter Masala')" class="flex-1 bg-orange-500 text-white py-2 rounded-lg font-bold">Buy</button>
+                        <button onclick="addToCart('Paneer Butter Masala', 149)" class="flex-1 bg-gray-100 hover:bg-gray-200 py-2 rounded-lg font-bold transition">Add</button>
+                        <button onclick="payNow(149, 'Paneer Butter Masala')" class="flex-1 bg-orange-500 text-white hover:bg-orange-600 py-2 rounded-lg font-bold transition">Buy</button>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 
-    <section id="social activities" class="page-section hidden py-20 bg-green-50">
+    <!-- Social Impact System Operations Platform -->
+    <section id="social-activities" class="page-section hidden py-20 bg-green-50">
         <div class="max-w-5xl mx-auto px-4">
             <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/2">
@@ -272,12 +294,13 @@
                     <button onclick="payNow(500, 'NGO Donation')" class="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-full font-bold shadow-lg transition">Donate ₹500</button>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" class="rounded-2xl rotate-2">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" class="rounded-2xl transform rotate-2" alt="Social Activities Outreach">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact Platform Matrix -->
     <section id="contact" class="page-section hidden py-20">
         <div class="max-w-4xl mx-auto px-4">
             <div class="bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col md:flex-row">
@@ -299,28 +322,31 @@
                             <option value="Spa">Wellness Spa</option>
                             <option value="NGO">Volunteering</option>
                         </select>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold mt-6">SEND INQUIRY</button>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold mt-6 hover:bg-blue-700 transition">SEND INQUIRY</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Global App Footer Block -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-gray-400">© 2024 Bhubaneswar Hub. Built for Luxury & Community.</p>
+            <p class="text-gray-400">© 2026 Bhubaneswar Hub. Built for Luxury & Community.</p>
             <div class="mt-4 space-x-4">
-                <a href="privacy.html" class="text-gray-300 hover:text-white">Privacy Policy</a>
-                <a href="refund.html" class="text-gray-300 hover:text-white">Refund Policy</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm">Privacy Policy</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm">Refund Policy</a>
             </div>
         </div>
-    </footer>
+    </footer >
 
+    <!-- Core Interactive Client Modals UI Engine Layout elements -->
+    <!-- Cart Modal Screen Layer -->
     <div id="cartModal" class="fixed inset-0 bg-black/60 hidden z-[60] backdrop-blur-sm">
         <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl p-8 overflow-y-auto">
             <div class="flex justify-between items-center mb-8 border-b pb-4">
                 <h3 class="text-2xl font-bold">Your Order</h3>
-                <button onclick="toggleCart()" class="text-2xl">&times;</button>
+                <button onclick="toggleCart()" class="text-2xl font-bold hover:text-red-500">&times;</button>
             </div>
             <div id="cartItems" class="space-y-6"></div>
             <div class="mt-10 border-t pt-6">
@@ -328,24 +354,54 @@
                     <span>Total Amount</span>
                     <span id="cartTotal">₹0</span>
                 </div>
-                <button onclick="checkoutCart()" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg">PROCEED TO PAY</button>
-                <button onclick="clearCart()" class="w-full text-red-500 font-bold mt-4">Clear Cart</button>
+                <button onclick="checkoutCart()" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition">PROCEED TO PAY</button>
+                <button onclick="clearCart()" class="w-full text-red-500 font-bold mt-4 hover:text-red-700 transition">Clear Cart</button>
             </div>
         </div>
     </div>
 
+    <!-- Administrative Login Verification Modal Gateway -->
+    <div id="adminLoginModal" class="fixed inset-0 bg-black/60 hidden z-[70] backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-2xl p-8 shadow-2xl relative">
+            <button onclick="closeAdminLoginModal()" class="absolute top-4 right-4 text-2xl text-gray-400 hover:text-gray-600 font-bold">&times;</button>
+            <div class="text-center mb-6">
+                <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fas fa-user-lock"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Administrator Login</h3>
+                <p class="text-sm text-gray-500">Access protected image gallery controls</p>
+            </div>
+            <form id="adminLoginForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">System Username</label>
+                    <input type="text" id="admUsername" required class="w-full border p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50" placeholder="admin">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 uppercase mb-1">Access Password</label>
+                    <input type="password" id="admPassword" required class="w-full border p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50" placeholder="••••••••">
+                </div>
+                <div id="loginErrorMessage" class="text-xs text-red-500 font-semibold hidden">
+                    <i class="fas fa-exclamation-circle mr-1"></i> Invalid secure credential configurations. Try again.
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold shadow-md hover:bg-blue-700 transition tracking-wide">AUTHENTICATE</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Action Actionable Fixed Control Overlay Hub -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-40">
-        <a href="https://wa.me/918984081009" target="_blank" class="bg-green-500 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition">
+        <a href="https://wa.me/918984081009" target="_blank" class="bg-green-500 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition duration-300">
             <i class="fab fa-whatsapp text-2xl"></i>
         </a>
-        <a href="tel:+918984081009" class="bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition" title="Call us">
+        <a href="tel:+918984081009" class="bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition duration-300" title="Call us">
             <i class="fas fa-phone text-xl"></i>
         </a>
-        <button onclick="openUPIPaymentPrompt()" class="bg-orange-500 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition" title="Pay via UPI">
+        <button onclick="openUPIPaymentPrompt()" class="bg-orange-500 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition duration-300" title="Pay via UPI">
             <i class="fas fa-money-bill-wave text-xl"></i>
         </button>
     </div>
 
+    <!-- Script Application Logic Initialization -->
     <script src="script.js"></script>
 </body>
 </html>
